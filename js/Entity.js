@@ -68,10 +68,4 @@ class Entity {
   render(){
   }
 
-  /**
-  * @description Desenha a entidade na tela
-  */
-  update(){
-  }
-
 }
