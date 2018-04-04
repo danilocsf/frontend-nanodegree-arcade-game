@@ -8,4 +8,11 @@ class Enemy extends Entity{
     constructor(sprite = 'images/enemy-bug.png'){
         super(sprite);
     }
+
+     /**
+    * @description Desenha o inimigo na tela
+    */
+    render(){
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
 }

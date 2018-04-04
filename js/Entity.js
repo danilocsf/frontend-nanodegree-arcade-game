@@ -11,6 +11,10 @@ class Entity {
       throw new TypeError("A classe Entity não pode ser instanciada.");
     }
 
+    if (this.render === Entity.render) {
+      throw new TypeError("O método render deve ser implementado.");
+    }
+
     this._sprite = sprite;
     /*Posição da entidade no eixo x*/
     this._x;
@@ -56,6 +60,18 @@ class Entity {
   */
   get sprite(){
     return this._sprite;
+  }
+
+  /**
+  * @description Desenha a entidade na tela
+  */
+  render(){
+  }
+
+  /**
+  * @description Desenha a entidade na tela
+  */
+  update(){
   }
 
 }

@@ -8,4 +8,5 @@ class Player extends Entity{
     constructor(sprite = 'images/char-boy.png'){
         super(sprite);
     }
+
 }
