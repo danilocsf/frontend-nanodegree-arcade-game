@@ -10,8 +10,8 @@ class App {
         instance = this;
         this._player = new Player();
         this._enemies = [];
-        this._initListener();
         this._fillEnemies(CanvasInformation.numberOfEnemies);
+        this._initListener();
     }
 
     get allEntities(){
@@ -41,4 +41,3 @@ class App {
     }
 
 }
-

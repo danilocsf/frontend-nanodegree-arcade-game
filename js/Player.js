@@ -16,4 +16,19 @@ class Player extends Entity{
     moveToInitialPosition(){
 
     }
+
+    handleInput(directionStr) {
+        if (directionStr === 'left') {
+            this.moveLeft();
+        }
+        if (directionStr === 'right') {
+            this.moveRight();
+        }
+        if (directionStr === 'up') {
+            this.moveUp();
+        }
+        if (directionStr === 'down') {
+            this.moveDown();
+        }
+    }
 }
