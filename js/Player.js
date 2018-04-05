@@ -14,21 +14,80 @@ class Player extends Entity{
      * @description Altera as coordenadas do jogador para a posição inicial
     */
     moveToInitialPosition(){
-
+        this.x = 2;
+        this.y = CanvasInformation.numberOfRows - 1;
     }
 
+     /**
+     * @description gerencia as ações do jogador(teclas cima, baixo, esquerda e direita)
+     * @param {string} moveTo - direção a qual o jogador deve mover
+    */
     handleInput(moveTo) {
-        if (moveTo === 'left') {
-            this.moveLeft();
+        switch(moveTo){
+            case "up":
+                this._moveUp();
+            break;
+            case "right":
+                this._moveRight();
+            break;
+            case "left":
+                this._moveLeft();
+            break;
+            case "down":
+                this._moveDown();
+            break;
+
         }
-        if (moveTo === 'right') {
-            this.moveRight();
+    }
+    /**
+     * @description atualiza a posição do jogador para uma casa para esquerda,
+     * caso não esteja na borda da tela.
+     */
+    _moveLeft(){
+        if(this.x > 0){
+            this.x -= 1;
         }
-        if (moveTo === 'up') {
-            this.moveUp();
+    }
+
+    /**
+     * @description atualiza a posição do jogador para uma casa para direita,
+     * caso não esteja na borda da tela.
+     */
+    _moveRight(){
+        if(this.x < CanvasInformation.numberOfColumns - 1){
+            this.x += 1;
         }
-        if (moveTo === 'down') {
-            this.moveDown();
+    }
+
+    /**
+     * @description atualiza a posição do jogador para uma casa para baixo,
+     * caso não esteja na borda da tela.
+     */
+    _moveDown(){
+        if(this.y < CanvasInformation.numberOfRows - 1){
+            this.y += 1;
         }
+    }
+
+    /**
+     * @description atualiza a posição do jogador para uma casa para cima,
+     * caso não esteja na borda da tela.
+     */
+    _moveUp(){
+        if(this.y > 0){
+            this.y -= 1;
+        }
+    }
+
+    update(){
+        if(this.y === 0){
+            /**Jogador ganhou*/
+            this.moveToInitialPosition();
+        }
+    }
+
+    render(){
+        ctx.drawImage(Resources.get(this.sprite), this.x * CanvasInformation.xScale,
+        this.y * CanvasInformation.yScale + 30); // + 30 para ajustar o jogador no centro da figura atual
     }
 }
