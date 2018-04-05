@@ -11,7 +11,7 @@ class App {
         this._player = new Player();
         this._enemies = [];
         this._fillEnemies(CanvasInformation.numberOfEnemies);
-        this._initListener();
+        this._addPlayerKeyListener();
     }
 
     get allEntities(){
@@ -28,8 +28,8 @@ class App {
         }
     }
 
-    _initListener(){
-        document.addEventListener('keyup', function(e) {
+    _addPlayerKeyListener(){
+        document.addEventListener('keyup', e => {
             let allowedKeys = {
                 37: 'left',
                 38: 'up',

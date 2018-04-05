@@ -17,17 +17,17 @@ class Player extends Entity{
 
     }
 
-    handleInput(directionStr) {
-        if (directionStr === 'left') {
+    handleInput(moveTo) {
+        if (moveTo === 'left') {
             this.moveLeft();
         }
-        if (directionStr === 'right') {
+        if (moveTo === 'right') {
             this.moveRight();
         }
-        if (directionStr === 'up') {
+        if (moveTo === 'up') {
             this.moveUp();
         }
-        if (directionStr === 'down') {
+        if (moveTo === 'down') {
             this.moveDown();
         }
     }
