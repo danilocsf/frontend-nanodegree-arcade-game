@@ -45,7 +45,7 @@ class Player extends Entity{
      */
     _moveLeft(){
         if(this.x > 0){
-            this.x -= 1;
+            this.x--;
         }
     }
 
@@ -55,7 +55,7 @@ class Player extends Entity{
      */
     _moveRight(){
         if(this.x < CanvasInformation.numberOfColumns - 1){
-            this.x += 1;
+            this.x++;
         }
     }
 
@@ -65,7 +65,7 @@ class Player extends Entity{
      */
     _moveDown(){
         if(this.y < CanvasInformation.numberOfRows - 1){
-            this.y += 1;
+            this.y++;
         }
     }
 
@@ -75,7 +75,7 @@ class Player extends Entity{
      */
     _moveUp(){
         if(this.y > 0){
-            this.y -= 1;
+            this.y--;
         }
     }
 
@@ -88,6 +88,6 @@ class Player extends Entity{
 
     render(){
         ctx.drawImage(Resources.get(this.sprite), this.x * CanvasInformation.xScale,
-        this.y * CanvasInformation.yScale + 30); // + 30 para ajustar o jogador no centro da figura atual
+        this.y * CanvasInformation.yScale - 30); // -30 para ajustar o jogador no centro da figura atual
     }
 }
