@@ -18,6 +18,10 @@ class App {
         return [].concat(this._enemies, this._player);
     }
 
+    get enemies(){
+        return this._enemies;
+    }
+
     get player(){
         return this._player;
     }
