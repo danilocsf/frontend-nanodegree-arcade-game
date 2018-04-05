@@ -1,26 +1,21 @@
-/**
-* @description classe controladora
-*/
+let instance = null;
+
 class App {
-
-    static INSTANCE;
-
 
     constructor(){
 
-        if(INSTANCE){
-            return INSTANCE;
+        if(instance){
+            return instance;
         }
-        this.INSTANCE = this;
-        const numberOfEnemies = 5;
-
+        instance = this;
         this._player = new Player();
-        this._enemies [];
+        this._enemies = [];
         this._initListener();
-        this._fillEnemies(numberOfEnemies);
+        this._fillEnemies(CanvasInformation.numberOfEnemies);
     }
 
     get allEnemies(){
+        /*Mantém o array imutável */
         return [].concat(this._enemies);
     }
 
@@ -30,7 +25,7 @@ class App {
 
     _fillEnemies(numberOfEnemies){
         for(let i = 0; i < numberOfEnemies; i++){
-            _enemies.push(new Enemy());
+            this._enemies.push(new Enemy());
         }
     }
 
@@ -42,7 +37,6 @@ class App {
                 39: 'right',
                 40: 'down'
             };
-
             this._player.handleInput(allowedKeys[e.keyCode]);
         });
     }

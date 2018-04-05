@@ -7,6 +7,13 @@ class Player extends Entity{
 
     constructor(sprite = 'images/char-boy.png'){
         super(sprite);
+        this.moveToInitialPosition();
     }
 
+    /**
+     * @description Altera as coordenadas do jogador para a posição inicial
+    */
+    moveToInitialPosition(){
+
+    }
 }

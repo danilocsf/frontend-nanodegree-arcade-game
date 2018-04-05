@@ -7,6 +7,8 @@ class Enemy extends Entity{
 
     constructor(sprite = 'images/enemy-bug.png'){
         super(sprite);
+        /*Velocidade aleatória do inimigo*/
+        this._enemySpeed = Math.floor(Math.random() * 300) + 10;
     }
 
     /**

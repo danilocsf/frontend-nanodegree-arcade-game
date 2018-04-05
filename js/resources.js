@@ -10,11 +10,11 @@
     var readyCallbacks = [];
 
     /* This is the publicly accessible image loading function. It accepts
-     * an array of strings pointing to image files or a string for a single
+     * an array or Set of strings pointing to image files or a string for a single
      * image. It will then call our private image loading function accordingly.
      */
     function load(urlOrArr) {
-        if(urlOrArr instanceof Array) {
+        if(urlOrArr instanceof Array || urlOrArr instanceof Set) {
             /* If the developer passed in an array of images
              * loop through each value and call our image
              * loader on that image file
