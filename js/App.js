@@ -14,9 +14,8 @@ class App {
         this._fillEnemies(CanvasInformation.numberOfEnemies);
     }
 
-    get allEnemies(){
-        /*Mantém o array imutável */
-        return [].concat(this._enemies);
+    get allEntities(){
+        return [].concat(this._enemies, this._player);
     }
 
     get player(){

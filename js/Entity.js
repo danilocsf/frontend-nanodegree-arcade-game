@@ -15,6 +15,10 @@ class Entity {
       throw new TypeError("O método render deve ser implementado.");
     }
 
+    if (this.update === Entity.update) {
+      throw new TypeError("O método update deve ser implementado.");
+    }
+
     this._sprite = sprite;
     /*Posição da entidade no eixo x*/
     this._x;
@@ -65,7 +69,11 @@ class Entity {
   /**
   * @description Desenha a entidade na tela
   */
-  render(){
-  }
+  render(){}
+
+  /**
+  * @description Atualiza a posição da entidade
+  */
+  update(){}
 
 }

@@ -34,25 +34,10 @@ var Engine = (function(global) {
      * and handles properly calling the update and render methods.
      */
     function main() {
-        /* Get our time delta information which is required if your game
-         * requires smooth animation. Because everyone's computer processes
-         * instructions at different speeds we need a constant value that
-         * would be the same for everyone (regardless of how fast their
-         * computer is) - hurray time!
-         */
-        var now = Date.now(),
-            dt = (now - lastTime) / 1000.0;
 
-        /* Call our update/render functions, pass along the time delta to
-         * our update function since it may be used for smooth animation.
-         */
-        update(dt);
+        /* Call our update/render functions*/
+        update();
         render();
-
-        /* Set our lastTime variable which is used to determine the time delta
-         * for the next time this function is called.
-         */
-        lastTime = now;
 
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
@@ -60,13 +45,9 @@ var Engine = (function(global) {
         win.requestAnimationFrame(main);
     }
 
-    /* This function does some initial setup that should only occur once,
-     * particularly setting the lastTime variable that is required for the
-     * game loop.
-     */
+    /* This function does some initial setup that should only occur once */
     function init() {
         reset();
-        lastTime = Date.now();
         main();
     }
 
@@ -79,8 +60,8 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
-    function update(dt) {
-        updateEntities(dt);
+    function update() {
+        updateEntities();
         // checkCollisions();
     }
 
@@ -91,11 +72,8 @@ var Engine = (function(global) {
      * the data/properties related to the object. Do your drawing in your
      * render methods.
      */
-    function updateEntities(dt) {
-        app.allEnemies.forEach(function(enemy) {
-            enemy.update(dt);
-        });
-        app.player.update();
+    function updateEntities() {
+        app.allEntities.forEach(entity =>  entity.update());
     }
 
     /* This function initially draws the "game level", it will then call
@@ -138,11 +116,7 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-        app.allEnemies.forEach(function(enemy) {
-            app.enemy.render();
-        });
-
-        app.player.render();
+        app.allEntities.forEach(entity =>  entity.render());
     }
 
     /* This function does nothing but it could have been a good place to

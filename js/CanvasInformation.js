@@ -1,3 +1,6 @@
+/*Variável auxiliar para cálculo do delta, para renderização dos inimigos*/
+let _auxLastTime = Date.now();
+
 /**
  * @description Classe de suporte contendo informações a respeito das informações gráficas do jogo.
 */
@@ -7,7 +10,18 @@ class CanvasInformation {
         if (this.constructor === CanvasInformation) {
             // Terá apenas métodos estáticos.
             throw new TypeError("A classe CanvasInformation não pode ser instanciada.");
-          }
+        }
+    }
+
+    /**
+     * @description delta utilizado para as animações dos inimigos. (Utilizado quando necessário animações suaves)
+     * @returns {number}
+     */
+    static get animationDelta(){
+        let now = Date.now();
+        let dt = (now - lastTime) / 1000.0;
+        _auxLastTime = now;
+        return dt;
     }
 
     /**

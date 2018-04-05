@@ -18,7 +18,7 @@ class Enemy extends Entity{
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
-    update(dt) {
+    update() {
 
     }
 }
