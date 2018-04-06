@@ -2,21 +2,22 @@
 * @description Representa uma classe abstrata com as propriedades e funcionalidades genéricas das entidades do jogo
 * @constructor
 * @param {string} sprite - Caminho da imagem da entidade
+* @param {number} adjustment - Ajuste para posicionar a entidade no centro da figura atual
 */
 class Entity {
 
-  constructor(sprite) {
+  constructor(sprite, adjustment) {
     if (this.constructor === Entity) {
       // Não faz sentido uma classe abstrata ser instanciada
       throw new TypeError("A classe Entity não pode ser instanciada.");
     }
 
-    if (this.render === Entity.render) {
-      throw new TypeError("O método render deve ser implementado.");
-    }
-
     if (this.update === Entity.update) {
       throw new TypeError("O método update deve ser implementado.");
+    }
+
+    if (this.moveToInitialPosition === Entity.moveToInitialPosition) {
+      throw new TypeError("O método moveToInitialPosition deve ser implementado.");
     }
 
     this._sprite = sprite;
@@ -24,6 +25,8 @@ class Entity {
     this._x;
     /*Posição da entidade no eixo y*/
     this._y;
+    /*Ajuste para posicionar a entidade no centro da figura atual*/
+    this._adjustment = adjustment;
   }
 
   /**
@@ -67,13 +70,21 @@ class Entity {
   }
 
   /**
-  * @description Desenha a entidade na tela
-  */
-  render(){}
+   * @description Desenha a entidade na tela
+   */
+  render(){
+    ctx.drawImage(Resources.get(this.sprite), this._x * CanvasInformation.xScale,
+      this._y * CanvasInformation.yScale - this._adjustment);
+  }
 
   /**
   * @description Atualiza a posição da entidade
   */
   update(){}
+
+  /**
+   * @description Posiciona a entidade em sua posição inicial
+   */
+  moveToInitialPosition(){}
 
 }

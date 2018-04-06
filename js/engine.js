@@ -62,7 +62,7 @@ var Engine = (function(global) {
      */
     function update() {
         updateEntities();
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -74,6 +74,16 @@ var Engine = (function(global) {
      */
     function updateEntities() {
         app.allEntities.forEach(entity =>  entity.update());
+    }
+
+    function checkCollisions(){
+        const player = app.player;
+        app.allEnemies.forEach( enemy => {
+            if( (player.x >= enemy.x - 0.70) && (player.x <= enemy.x + 0.70) &&
+                (player.y >= enemy.y - 0.70) && (player.y <= enemy.y + 0.70) ){
+                    player.moveToInitialPosition();
+            }
+        });
     }
 
     /* This function initially draws the "game level", it will then call
@@ -131,7 +141,7 @@ var Engine = (function(global) {
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
      */
-    Resources.load(new Set(CanvasInformation.rowImages).add(app.player.sprite).add(app.enemies[0].sprite));
+    Resources.load(app.allImages);
     Resources.onReady(init);
 
     /* Assign the canvas' context object to the global variable (the window

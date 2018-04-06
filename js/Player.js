@@ -6,7 +6,7 @@
 class Player extends Entity{
 
     constructor(sprite = 'images/char-boy.png'){
-        super(sprite);
+        super(sprite, 30);
         this.moveToInitialPosition();
     }
 
@@ -14,8 +14,8 @@ class Player extends Entity{
      * @description Altera as coordenadas do jogador para a posição inicial
     */
     moveToInitialPosition(){
-        this.x = 2;
-        this.y = CanvasInformation.numberOfRows - 1;
+        this._x = 2;
+        this._y = CanvasInformation.numberOfRows - 1;
     }
 
      /**
@@ -44,8 +44,8 @@ class Player extends Entity{
      * caso não esteja na borda da tela.
      */
     _moveLeft(){
-        if(this.x > 0){
-            this.x--;
+        if(this._x > 0){
+            this._x--;
         }
     }
 
@@ -54,8 +54,8 @@ class Player extends Entity{
      * caso não esteja na borda da tela.
      */
     _moveRight(){
-        if(this.x < CanvasInformation.numberOfColumns - 1){
-            this.x++;
+        if(this._x < CanvasInformation.numberOfColumns - 1){
+            this._x++;
         }
     }
 
@@ -64,8 +64,8 @@ class Player extends Entity{
      * caso não esteja na borda da tela.
      */
     _moveDown(){
-        if(this.y < CanvasInformation.numberOfRows - 1){
-            this.y++;
+        if(this._y < CanvasInformation.numberOfRows - 1){
+            this._y++;
         }
     }
 
@@ -74,20 +74,17 @@ class Player extends Entity{
      * caso não esteja na borda da tela.
      */
     _moveUp(){
-        if(this.y > 0){
-            this.y--;
+        if(this._y > 0){
+            this._y--;
         }
     }
 
     update(){
-        if(this.y === 0){
+        if(this._y === 0){
             /**Jogador ganhou*/
+            alert('Você ganhou!');
             this.moveToInitialPosition();
         }
     }
 
-    render(){
-        ctx.drawImage(Resources.get(this.sprite), this.x * CanvasInformation.xScale,
-        this.y * CanvasInformation.yScale - 30); // -30 para ajustar o jogador no centro da figura atual
-    }
 }

@@ -14,12 +14,16 @@ class App {
         this._addPlayerKeyListener();
     }
 
+    get allImages(){
+        return new Set(CanvasInformation.rowImages).add(this._player.sprite).add(this._enemies[0].sprite);
+    }
+
     get allEntities(){
         return [].concat(this._enemies, this._player);
     }
 
-    get enemies(){
-        return this._enemies;
+    get allEnemies(){
+        return [].concat(this._enemies);
     }
 
     get player(){

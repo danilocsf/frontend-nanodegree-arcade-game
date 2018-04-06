@@ -19,7 +19,7 @@ class CanvasInformation {
      */
     static get animationDelta(){
         let now = Date.now();
-        let dt = (now - lastTime) / 1000.0;
+        let dt = (now - _auxLastTime) / 1000.0;
         _auxLastTime = now;
         return dt;
     }
@@ -38,6 +38,22 @@ class CanvasInformation {
     */
     static get height(){
         return 606;
+    }
+
+    /**
+    * @description Retorna a linha  onde começa a rua
+    * @returns {number} linha onde começa a rua
+    */
+    static get firstStreetRow(){
+        return 1;
+    }
+
+    /**
+    * @description Retorna a linha  onde termina a rua
+    * @returns {number} linha  onde termina a rua
+    */
+    static get lastStreetRow(){
+        return 3;
     }
 
    /**
